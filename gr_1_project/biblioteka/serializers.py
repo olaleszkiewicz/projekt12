@@ -147,3 +147,5 @@ class StanowiskoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stanowisko
         fields = "__all__"
+
+        
