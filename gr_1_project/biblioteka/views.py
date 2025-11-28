@@ -194,3 +194,25 @@ class BookDetailView(RetrieveUpdateDestroyAPIView):
 # class StanowiskoListAPIView(ListAPIView):
 #     queryset = Stanowisko.objects.all()
 #     serializer_class = StanowiskoSerializer
+
+
+from django.http import HttpResponse
+import datetime
+
+
+def welcome_view(request):
+    now = datetime.datetime.now()
+    html = f"""
+        <html><body>
+        Witaj użytkowniku! </br>
+        Aktualna data i czas na serwerze: {now}.
+        </body></html>"""
+    return HttpResponse(html)
+
+def osoba_list_html(request):
+    # pobieramy wszystkie obiekty Osoba z bazy poprzez QuerySet
+    osoby = Osoba.objects.all()
+    #return HttpResponse(osoby)
+    return render(request,
+                  "biblioteka/osoba/list.html",
+                  {'osoby': osoby})
