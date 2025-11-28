@@ -69,7 +69,7 @@ class Osoba(models.Model):
     imie = models.CharField(max_length=50, blank = False, null = False)
     nazwisko = models.CharField(max_length=100, blank = False, null = False)
     plec = models.IntegerField(choices = PLCIE.choices, default = PLCIE.choices[2][0])
-    stanowisko = models.ForeignKey('Stanowsisko', on_delete = models.CASCADE)
+    stanowisko = models.ForeignKey('Stanowisko', on_delete = models.CASCADE)
     data_dodania = models.DateField(auto_now_add = True, editable = False)
 
     def __str__(self):
@@ -78,6 +78,6 @@ class Osoba(models.Model):
     class Meta:
         ordering = ["nazwisko"]
 
-class Stanowsisko(models.Model):
+class Stanowisko(models.Model):
     nazwa = models.CharField(max_length = 70, null = False, blank = False)
     opis = models.TextField(null = True, blank = True)
